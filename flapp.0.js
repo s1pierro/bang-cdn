@@ -1576,16 +1576,6 @@ class UserView extends AppView {
     
   }
 }
-class HiddenView0 extends AppView {
-  constructor(app) {
-    super(app, 'user');
-    this.el.innerHTML = ``;
-  }
-  mountContent () {
-    true;
-    
-  }
-}
 class HiddenView extends AppView {
   constructor(app) {
     super(app, 'hidden');
@@ -1604,7 +1594,7 @@ const randomIngredients = gameassets
   .sort(() => Math.random() - 0.5)     // mélange simple
   .slice(0, 5);                        // on garde les 5 premiers
 l(randomIngredients);
-this.game = new PanelDePon(container, 7, 14, randomIngredients);
+this.game = new PanelDePon(container, 6, 12, randomIngredients);
   }
 }
 class PerfMonitor {
