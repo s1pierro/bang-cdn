@@ -1594,7 +1594,7 @@ const randomIngredients = gameassets
   .sort(() => Math.random() - 0.5)     // mélange simple
   .slice(0, 5);                        // on garde les 5 premiers
 l(randomIngredients);
-this.game = new PanelDePon(container, 6, 12, randomIngredients);
+this.game = new PanelDePon(container, 7, 12, randomIngredients);
   }
 }
 class PerfMonitor {
