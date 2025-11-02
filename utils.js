@@ -1,3 +1,15 @@
+
+function setThemeColor(color) {
+   
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+  meta = document.createElement('meta');
+  meta.setAttribute('name', 'theme-color');
+  document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', color);
+  }
+
 async function injectMarkdown(e,o){let t="string"==typeof o?document.querySelector(o):o;if(!t){console.warn(`⚠️ Conteneur introuvable pour ${o}`);return}try{let i=await fetch(e);if(!i.ok)throw Error(`Impossible de charger ${e}`);let a=await i.text(),n=a.replace(/^### (.*$)/gim,"<h3>$1</h3>").replace(/^## (.*$)/gim,"<h2>$1</h2>").replace(/^# (.*$)/gim,"<h1>$1</h1>").replace(/\*\*(.*?)\*\*/gim,"<b>$1</b>").replace(/\*(.*?)\*/gim,"<i>$1</i>").replace(/\n\s*-\s(.*)/gim,"<ul><li>$1</li></ul>").replace(/\n/gim,"<br>").replace(/\[(.*?)\]\((.*?)\)/gim,'<a href="$2">$1</a>');t.appendChild(mkdiv(`<div class="markdown">${n}</div>`))}catch(r){t.innerHTML='<p style="color:red">Erreur de chargement du document.</p>',console.error("\uD83D\uDCC4 Erreur injectMarkdown:",r)}}function getWeekNumber(e=new Date){let o=new Date(Date.UTC(e.getFullYear(),e.getMonth(),e.getDate())),t=o.getUTCDay()||7;o.setUTCDate(o.getUTCDate()+4-t);let i=new Date(Date.UTC(o.getUTCFullYear(),0,1));return Math.ceil(((o-i)/864e5+1)/7)}function injectPwaTip(e){let o="string"==typeof e?document.querySelector(e):e;if(!o){console.warn("⚠️ injectPwaTip : conteneur introuvable");return}if(o.querySelector(".pwa-tip")){console.info("ℹ️ PWA tip d\xe9j\xe0 pr\xe9sent dans ce conteneur");return}let t=`
     <div class="pwa-tip">
       <h3>💡 Astuce&nbsp;: installez l’application</h3>
